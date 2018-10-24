@@ -9,10 +9,7 @@ class Board extends React.Component {
       squares: Array(9).fill(null)
     };
   }
-
-  renderSquare(i) {
-    return <Square value={i} />;
-  }
+  square = i => <Square value={i} />;
 
   render() {
     const status = 'Next player: X';
@@ -21,19 +18,19 @@ class Board extends React.Component {
       <React.Fragment>
         <div className="status">{status}</div>
         <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+          {this.square(0)}
+          {this.square(1)}
+          {this.square(2)}
         </div>
         <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
+          {this.square(3)}
+          {this.square(4)}
+          {this.square(5)}
         </div>
         <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
+          {this.square(6)}
+          {this.square(7)}
+          {this.square(8)}
         </div>
       </React.Fragment>
     );
