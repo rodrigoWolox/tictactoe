@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Styles from './styles.scss';
 import Square from './components/Square';
 
 class Board extends React.Component {
@@ -9,28 +10,35 @@ class Board extends React.Component {
       squares: Array(9).fill(null)
     };
   }
-  square = i => <Square value={i} />;
+
+  handleClick = i => {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({ squares });
+  };
+
+  renderSquare = i => <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />;
 
   render() {
     const status = 'Next player: X';
 
     return (
       <React.Fragment>
-        <div className="status">{status}</div>
-        <div className="board-row">
-          {this.square(0)}
-          {this.square(1)}
-          {this.square(2)}
+        <div className={Styles.status}>{status}</div>
+        <div className={Styles.boardRow}>
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
         </div>
-        <div className="board-row">
-          {this.square(3)}
-          {this.square(4)}
-          {this.square(5)}
+        <div className={Styles.boardRow}>
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
         </div>
-        <div className="board-row">
-          {this.square(6)}
-          {this.square(7)}
-          {this.square(8)}
+        <div className={Styles.boardRow}>
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
         </div>
       </React.Fragment>
     );
