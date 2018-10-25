@@ -2,9 +2,10 @@ import React from 'react';
 
 import Styles from './styles.scss';
 
-function Square(props) {
+const Square= props => {
+  const a = () => props.onClick(props.position);
   return (
-    <button position={props.position} className={Styles.square} onClick={() => props.onClick(props.position)} >
+    <button position={props.position} className={Styles.square} onClick={a}>
       {props.value}
     </button>
   );
