@@ -17,7 +17,7 @@ class Board extends React.Component {
     this.setState({ squares });
   };
 
-  renderSquare = i => <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />;
+  renderSquare = i => <Square position={i} value={this.state.squares[i]} onClick={this.handleClick} />;
 
   render() {
     const status = 'Next player: X';
