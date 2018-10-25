@@ -1,22 +1,14 @@
 import React from 'react';
 
-class Square extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: this.props.value
-    };
-  }
+import Styles from './styles.scss';
 
-  setValue = () => this.setState({ value: 'X' });
+class Square extends React.Component {
+  setValue = () => this.props.onClick(this.props.position);
 
   render() {
     return (
-      <button 
-        className="square" 
-        onClick={ this.setValue }
-      >
-        {this.state.value}
+      <button position={this.props.position} className={Styles.square} onClick={this.setValue}>
+        {this.props.value}
       </button>
     );
   }
