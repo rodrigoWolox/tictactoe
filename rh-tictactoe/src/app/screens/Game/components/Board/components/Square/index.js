@@ -9,7 +9,6 @@ class Square extends React.Component {
     return (
       <button
         position={this.props.position}
-        disable={this.props.disable}
         className={Styles.square}
         onClick={this.setValue}
       >

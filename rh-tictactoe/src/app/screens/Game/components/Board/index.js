@@ -8,37 +8,35 @@ class Board extends React.Component {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
-      xIsNext: true
+      xIsNext: true,
+      status: 'Next player: X'
     };
   }
 
   handleClick = i => {
     const squares = this.state.squares.slice();
+    let status;
     if (calculateWinner(squares) === null && squares[i] === null) {
       squares[i] = this.state.xIsNext ? 'X' : 'O';
+      if (calculateWinner(squares)) {
+        status = 'Winner: ' + calculateWinner(squares);
+      } else {
+        status = 'Next player: ' + (!this.state.xIsNext ? 'X' : 'O');
+      }
       this.setState({
         squares,
-        xIsNext: !this.state.xIsNext
+        xIsNext: !this.state.xIsNext,
+        status
       });
     }
   };
 
-  renderSquare = i => <Square disable={this.state.isWinner} position={i} value={this.state.squares[i]} onClick={this.handleClick} />;
-
-
+  renderSquare = i => <Square position={i} value={this.state.squares[i]} onClick={this.handleClick} />;
 
   render() {
-    const winner = calculateWinner(this.state.squares);
-    let status;
-    if(winner){
-      status = 'Winner: ' + winner;
-    } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');;
-    }
-
     return (
       <React.Fragment>
-        <div className={Styles.status}>{status}</div>
+        <div className={Styles.status}>{this.state.status}</div>
         <div className={Styles.boardRow}>
           {this.renderSquare(0)}
           {this.renderSquare(1)}
