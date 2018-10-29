@@ -2,11 +2,11 @@ import React from 'react';
 
 import Styles from './styles.scss';
 
-const Square= props => {
-  const a = () => props.onClick(props.position);
+const Square = ({ onClick, value, position }) => {
+  const handleClick = () => onClick(position);
   return (
-    <button position={props.position} className={Styles.square} onClick={a}>
-      {props.value}
+    <button position={position} className={Styles.square} onClick={handleClick}>
+      {value}
     </button>
   );
 }

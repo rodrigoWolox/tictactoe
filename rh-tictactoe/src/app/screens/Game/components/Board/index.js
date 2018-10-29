@@ -17,7 +17,7 @@ class Board extends React.Component {
     this.setState({ squares });
   };
 
-  Square = i => <Square position={i} value={this.state.squares[i]} onClick={this.handleClick} />;
+  renderSquare = i => <Square position={i} value={this.state.squares[i]} onClick={this.handleClick} />;
 
   render() {
     const status = 'Next player: X';
@@ -26,19 +26,19 @@ class Board extends React.Component {
       <React.Fragment>
         <div className={Styles.status}>{status}</div>
         <div className={Styles.boardRow}>
-          {this.Square(0)}
-          {this.Square(1)}
-          {this.Square(2)}
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
         </div>
         <div className={Styles.boardRow}>
-          {this.Square(3)}
-          {this.Square(4)}
-          {this.Square(5)}
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
         </div>
         <div className={Styles.boardRow}>
-          {this.Square(6)}
-          {this.Square(7)}
-          {this.Square(8)}
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
         </div>
       </React.Fragment>
     );
