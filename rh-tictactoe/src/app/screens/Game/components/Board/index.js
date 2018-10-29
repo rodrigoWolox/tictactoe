@@ -23,7 +23,9 @@ class Board extends React.Component {
     }
   };
 
-  renderSquare = i => <Square position={i} value={this.state.squares[i]} onClick={this.handleClick} />;
+  renderSquare = i => <Square disable={this.state.isWinner} position={i} value={this.state.squares[i]} onClick={this.handleClick} />;
+
+
 
   render() {
     const winner = calculateWinner(this.state.squares);
