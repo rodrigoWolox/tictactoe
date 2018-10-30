@@ -17,7 +17,14 @@ class Game extends React.Component {
     const history = this.state.history;
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-
+    const moves = history.map((step, move) => {
+      const desc = move ? 'Go to move #' + move : 'Go to game start';
+      return (
+        <li>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        </li>
+      )
+    });
     let status;
     if (calculateWinner(squares) === null && squares[i] === null) {
       squares[i] = this.state.xIsNext ? 'X' : 'O';
@@ -28,9 +35,9 @@ class Game extends React.Component {
       }
       this.setState({
         history: history.concat([{ squares }]),
-        squares,
         xIsNext: !this.state.xIsNext,
-        status
+        status,
+        moves
       });
     }
   };
@@ -46,8 +53,8 @@ class Game extends React.Component {
           />
         </div>
         <div className={Styles.gameInfo}>
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <div>{this.state.status}</div>
+          <ol>{this.state.moves}</ol>
         </div>
       </div>
     );
