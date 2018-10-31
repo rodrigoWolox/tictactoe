@@ -9,7 +9,6 @@ class Board extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className={Styles.status}>{this.props.status}</div>
         <div className={Styles.boardRow}>
           {this.renderSquare(0)}
           {this.renderSquare(1)}
