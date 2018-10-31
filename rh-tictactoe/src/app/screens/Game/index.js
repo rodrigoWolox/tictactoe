@@ -11,24 +11,18 @@ class Game extends React.Component {
     this.state = {
       history: [{ squares: Array(9).fill(null) }],
       xIsNext: true,
-      status: 'Next player: X'
+      status: 'Next player: X',
+      stepNumber: 0,
+      moves: ''
     };
   }
 
   handleClick = i => {
-    const history = this.state.history;
+    let status;
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-
-    const moves = history.map((step, move) => {
-      const desc = move ? 'Go to move #' + move : 'Go to game start';
-      return (
-        <li>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      )
-    });
-    let status;
+    let moves = this.renderMoves(history.concat([{ squares }]));
     if (utils.calculateWinner(squares) === null && squares[i] === null) {
       squares[i] = this.state.xIsNext ? 'X' : 'O';
       if (utils.calculateWinner(squares)) {
@@ -40,17 +34,44 @@ class Game extends React.Component {
         history: history.concat([{ squares }]),
         xIsNext: !this.state.xIsNext,
         status,
-        moves
+        moves,
+        stepNumber: history.length
       });
     }
   };
+
+  jumpTo(step) {
+    let status;
+    if (calculateWinner(this.state.history[step])) {
+      status = 'Winner' + calculateWinner(this.state.history[step]);
+    } else {
+      status = 'Next player: ' + (step % 2 == 0 ? 'X' : 'O');
+    }
+    this.setState({
+      stepNumber: step,
+      xIsNext: step % 2 === 0,
+      status
+    });
+  }
+
+  renderMoves = history => {
+    const moves = history.map((step, move) => {
+      const desc = move ? 'Go to move #' + move : 'Go to game start';
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        </li>
+      );
+    });
+    return moves;
+  }
 
   render() {
     return (
       <div className={Styles.game}>
         <div className={Styles.gameBoard}>
           <Board
-            squares={this.state.history[this.state.history.length - 1].squares}
+            squares={this.state.history[this.state.stepNumber].squares}
             onClick={this.handleClick}
             status={this.state.status}
           />
