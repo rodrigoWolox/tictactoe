@@ -42,8 +42,8 @@ class Game extends React.Component {
 
   jumpTo(step) {
     let status;
-    if (calculateWinner(this.state.history[step])) {
-      status = 'Winner' + calculateWinner(this.state.history[step]);
+    if (utils.calculateWinner(this.state.history[step])) {
+      status = 'Winner' + utils.calculateWinner(this.state.history[step]);
     } else {
       status = 'Next player: ' + (step % 2 == 0 ? 'X' : 'O');
     }

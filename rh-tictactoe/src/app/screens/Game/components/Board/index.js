@@ -33,6 +33,6 @@ class Board extends React.Component {
 export default Board;
 
 Board.propTypes = {
-  squares: PropTypes.arrayOf(PropTypes.number).isRequired,
+  squares: PropTypes.arrayOf(PropTypes.oneOf(['X', 'O'])).isRequired,
   onClick: PropTypes.func.isRequired
 };

@@ -18,11 +18,7 @@ class Square extends React.Component {
 export default Square;
 
 Square.propTypes = {
-  onClick: PropTypes.func,
-  value: PropTypes.oneOf(['X', 'O']),
-  position: PropTypes.number
-};
-
-Square.defaultProps = {
-  value: null
+  onClick: PropTypes.func.isRequired,
+  value: PropTypes.oneOf(['X', 'O', null]),
+  position: PropTypes.number.isRequired
 };
