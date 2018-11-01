@@ -6,17 +6,31 @@ import { Provider } from 'react-redux';
 import Game from './app/screens/Game';
 import './scss/index.scss';
 
-function reducer() {
-  return {
-    history: [{ squares: Array(9).fill(null) }],
-    xIsNext: true,
-    status: 'Next player: X',
-    stepNumber: 0,
-    moves: ''
-  };
+const initialState = {
+  history: [{ squares: Array(9).fill(null) }],
+  xIsNext: true,
+  status: 'Next player: X',
+  stepNumber: 0,
+  moves: ''
+};
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case '':
+      return {
+        
+      }
+    default:
+      return state;
+  }
 }
 
-const store = createStore(reducer);
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+store.dispatch({ type: 'INCREMENT' });
 
 const App = () => {
   return (
