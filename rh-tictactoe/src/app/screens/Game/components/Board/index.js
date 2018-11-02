@@ -5,7 +5,7 @@ import Styles from './styles.scss';
 import Square from './components/Square';
 
 class Board extends React.Component {
-  renderSquare = i => <Square position={i} value={this.props.squares[i]} onClick={this.props.onClick} />;
+  renderSquare = i => <Square value={this.props.squares[i]} position={i} onClick={this.props.onClick} />;
 
   render() {
     return (
