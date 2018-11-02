@@ -3,9 +3,12 @@ import React from 'react';
 const renderMoves = history => {
   console.log(history);
   const moves = history.map(move => {
-    console.log(move);
     const desc = move ? 'Go to move #' + move : 'Go to game start';
-    const li = <li key={move}><button onClick={() => this.jumpTo(move)}>{desc}</button></li>;
+    const li = (
+      <li key={move}>
+        <button onClick={() => this.jumpTo(move)}>{desc}</button>
+      </li>
+    );
     return li;
   });
   return moves;
@@ -28,7 +31,7 @@ export function makeMove(state, i) {
   const current = history[history.length - 1];
   const squares = current.squares.slice();
 
-  let moves = renderMoves(history);
+  let moves = renderMoves(history.concat([{ squares }]));
   if (calculateWinner(squares) === null && squares[i] === null) {
     squares[i] = state.xIsNext ? 'X' : 'O';
     if (calculateWinner(squares)) {
