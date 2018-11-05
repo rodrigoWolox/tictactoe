@@ -1,18 +1,15 @@
-import React from 'react';
-
-const renderMoves = history => {
-  console.log(history);
-  const moves = history.map(move => {
-    const desc = move ? 'Go to move #' + move : 'Go to game start';
+/* const renderMoves = history => {
+  const moves = history.map((step, stepNumber) => {
+    const desc = stepNumber ? 'Go to move #' + stepNumber : 'Go to game start';
     const li = (
-      <li key={move}>
-        <button onClick={() => this.jumpTo(move)}>{desc}</button>
+      <li key={stepNumber}>
+        <button onClick={() => this.props.jumpTo(stepNumber)}>{desc}</button>
       </li>
     );
     return li;
   });
   return moves;
-};
+}; */
 
 export function calculateWinner(squares) {
   let winner = null;
@@ -30,33 +27,31 @@ export function makeMove(state, i) {
   const history = state.history.slice(0, state.stepNumber + 1);
   const current = history[history.length - 1];
   const squares = current.squares.slice();
-
-  let moves = renderMoves(history.concat([{ squares }]));
   if (calculateWinner(squares) === null && squares[i] === null) {
     squares[i] = state.xIsNext ? 'X' : 'O';
     if (calculateWinner(squares)) {
-      status = 'Winner: ' + calculateWinner(squares);
+      status = `Winner: ${calculateWinner(squares)}`;
     } else {
-      status = 'Next player: ' + (!state.xIsNext ? 'X' : 'O');
+      status = `Next player: ${!state.xIsNext ? 'X' : 'O'}`;
     }
+    return {
+      ...state,
+      history: history.concat([{ squares }]),
+      xIsNext: !state.xIsNext,
+      status,
+      stepNumber: history.length
+    };
   }
-
-  return {
-    ...state,
-    history: history.concat([{ squares }]),
-    xIsNext: !state.xIsNext,
-    status,
-    moves,
-    stepNumber: history.length
-  };
+  return state;
 }
 
 export function jumpTo(state, step) {
+  console.log(step);
   let status;
-  if (calculateWinner(this.props.history[step])) {
-    status = 'Winner' + calculateWinner(this.props.history[step]);
+  if (calculateWinner(state.history[step])) {
+    status = `Winner ${calculateWinner(state.history[step])}`;
   } else {
-    status = 'Next player: ' + (step % 2 === 0 ? 'X' : 'O');
+    status = `Next player: ${!state.xIsNext ? 'X' : 'O'}`;
   }
   return {
     ...state,

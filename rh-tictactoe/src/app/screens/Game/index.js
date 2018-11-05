@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { handleClick, jumpTo } from '../../../../src/redux/game/actions.js';
+import { actionCreator } from '../../../../src/redux/game/actions.js';
 
 import Styles from './styles.scss';
 import Board from './components/Board';
+import Moves from './components/Moves';
 
 class Game extends React.Component {
   render() {
@@ -15,30 +16,31 @@ class Game extends React.Component {
             squares={this.props.history[this.props.stepNumber].squares}
             onClick={this.props.handleClick}
             status={this.props.status}
+            history={this.props.history}
           />
         </div>
         <div className={Styles.gameInfo}>
           <div>{this.props.status}</div>
-          <ol>{this.props.moves}</ol>
+          <Moves onClick={this.props.jumpTo} moves={this.props.history} />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    history: state.game.history,
-    xIsNext: state.game.xIsNext,
-    status: state.game.status,
-    stepNumber: state.game.stepNumber,
-    moves: state.game.moves
-  };
-};
+const mapStateToProps = state => ({
+  history: state.game.history,
+  status: state.game.status,
+  stepNumber: state.game.stepNumber,
+  moves: state.game.moves
+});
 
 const mapDispatchToProps = dispatch => ({
-  handleClick: i => dispatch(handleClick(i)),
-  jumpTo: step => dispatch(jumpTo(step))
+  dispatch,
+  handleClick: i => dispatch(actionCreator.playTurn(i)),
+  jumpTo: step => {
+    dispatch(actionCreator.jumpTo(step));
+  }
 });
 
 export default connect(

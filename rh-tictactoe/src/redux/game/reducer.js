@@ -5,15 +5,20 @@ const initialState = {
   xIsNext: true,
   status: 'Next player: X',
   stepNumber: 0,
-  moves: ''
+  endGame: false,
+  moves: []
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case 'CHANGE_PLAYER':
+      return state.merge({ status: state.xIsNext ? 'a' : 'b', xIsNext: !state.xIsNext });
+    case 'SOMEONE_WON':
+      return state.merge({ status, endGame: true });
     case 'HANDLE_CLICK':
       return utils.makeMove(state, action.squarePosition);
     case 'JUMP_TO':
-      return utils.jumpTo(state, action.stepNumber);
+      return utils.jumpTo(state, action.step);
     default:
       return state;
   }
