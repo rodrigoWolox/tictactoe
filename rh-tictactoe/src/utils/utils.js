@@ -46,7 +46,6 @@ export function makeMove(state, i) {
 }
 
 export function jumpTo(state, step) {
-  console.log(step);
   let status;
   if (calculateWinner(state.history[step])) {
     status = `Winner ${calculateWinner(state.history[step])}`;

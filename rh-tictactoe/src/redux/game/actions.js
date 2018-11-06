@@ -1,13 +1,6 @@
-// import { calculateWinner } from '../../utils/utils';
+/* import { calculateWinner } from '../../utils/utils';
 
-export function handleClick(i) {
-  return {
-    type: 'HANDLE_CLICK',
-    i
-  };
-}
-
-/* export const nextPlayer = history => dispatch => {
+ export const nextPlayer = history => dispatch => {
   if (calculateWinner()) {
     dispatch({ type: 'SOMEONE_WON' });
   } else {
@@ -15,13 +8,6 @@ export function handleClick(i) {
   }
   dispatch(privateActionCreators.makeMove())
 } */
-
-export function jumpTo(step) {
-  return {
-    type: 'JUMP_TO',
-    stepNumber: step
-  };
-}
 
 export const actions = {
   HANDLE_CLICK: 'HANDLE_CLICK',

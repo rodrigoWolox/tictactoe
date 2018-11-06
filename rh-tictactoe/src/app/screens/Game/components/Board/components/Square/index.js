@@ -19,6 +19,6 @@ export default Square;
 
 Square.propTypes = {
   onClick: PropTypes.func.isRequired,
-  value: PropTypes.oneOf(['X', 'O', null]),
+  value: PropTypes.oneOf(['X', 'O']),
   position: PropTypes.number.isRequired
 };

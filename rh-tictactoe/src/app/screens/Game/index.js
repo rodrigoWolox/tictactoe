@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { actionCreator } from '../../../../src/redux/game/actions.js';
@@ -28,19 +29,24 @@ class Game extends React.Component {
   }
 }
 
+Game.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  history: PropTypes.arrayOf(PropTypes.object),
+  jumpTo: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
+  stepNumber: PropTypes.number.isRequired
+};
+
 const mapStateToProps = state => ({
   history: state.game.history,
   status: state.game.status,
-  stepNumber: state.game.stepNumber,
-  moves: state.game.moves
+  stepNumber: state.game.stepNumber
 });
 
 const mapDispatchToProps = dispatch => ({
   dispatch,
   handleClick: i => dispatch(actionCreator.playTurn(i)),
-  jumpTo: step => {
-    dispatch(actionCreator.jumpTo(step));
-  }
+  jumpTo: step => dispatch(actionCreator.jumpTo(step))
 });
 
 export default connect(
