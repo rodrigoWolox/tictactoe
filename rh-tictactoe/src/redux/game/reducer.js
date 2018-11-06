@@ -12,7 +12,10 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case 'CHANGE_PLAYER':
-      return state.merge({ status: state.xIsNext ? 'a' : 'b', xIsNext: !state.xIsNext });
+      return state.merge({
+        status: state.xIsNext ? 'Nest Player: X' : 'Next Player: O',
+        xIsNext: !state.xIsNext
+      });
     case 'SOMEONE_WON':
       return state.merge({ status, endGame: true });
     case 'HANDLE_CLICK':

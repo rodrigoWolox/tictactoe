@@ -16,7 +16,7 @@ class Move extends React.Component {
 export default Move;
 
 Move.propTypes = {
-  desc: PropTypes.string,
+  desc: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  step: PropTypes.number
+  step: PropTypes.number.isRequired
 };
