@@ -23,7 +23,7 @@ export default Game;
 
 Game.propTypes = {
   onClick: PropTypes.func.isRequired,
-  history: PropTypes.arrayOf(PropTypes.shape({ squares: PropTypes.array })),
+  history: PropTypes.arrayOf(PropTypes.shape({ squares: PropTypes.oneOf(['X', 'O']) })),
   jumpTo: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
   stepNumber: PropTypes.number.isRequired

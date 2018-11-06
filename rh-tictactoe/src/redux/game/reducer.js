@@ -4,9 +4,7 @@ const initialState = {
   history: [{ squares: Array(9).fill(null) }],
   xIsNext: true,
   status: 'Next player: X',
-  stepNumber: 0,
-  endGame: false,
-  moves: []
+  stepNumber: 0
 };
 
 export default function reducer(state = initialState, action) {
