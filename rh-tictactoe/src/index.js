@@ -6,12 +6,10 @@ import { store } from './redux/store';
 import Game from './app/screens/Game';
 import './scss/index.scss';
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <Game />
-    </Provider>
-  );
-};
+const App = () => (
+  <Provider store={store}>
+    <Game />
+  </Provider>
+);
 
 ReactDOM.render(<App />, document.getElementById('root'));
