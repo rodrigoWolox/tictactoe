@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { actionCreator } from '../../../../src/redux/game/actions.js';
+import { squarePropType } from '../../../../src/redux/game/reducer.js';
 
 import Game from './layout.js';
 
@@ -33,8 +34,7 @@ class GameContainer extends React.Component {
 }
 
 GameContainer.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.shape({ squares: PropTypes.arrayOf(PropTypes.oneOf(['X', 'O'])) }))
-    .isRequired,
+  history: PropTypes.arrayOf(PropTypes.shape({ squares: squarePropType })).isRequired,
   status: PropTypes.string.isRequired,
   stepNumber: PropTypes.number.isRequired,
   xIsNext: PropTypes.bool.isRequired

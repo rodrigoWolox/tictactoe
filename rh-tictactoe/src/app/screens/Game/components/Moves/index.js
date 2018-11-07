@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { squarePropType } from '../../../../../redux/game/reducer';
+
 import Move from './components/Move';
 
 class Moves extends React.Component {
@@ -18,6 +20,5 @@ export default Moves;
 
 Moves.propTypes = {
   onClick: PropTypes.func.isRequired,
-  moves: PropTypes.arrayOf(PropTypes.shape({ squares: PropTypes.arrayOf(PropTypes.oneOf(['X', 'O'])) }))
-    .isRequired
+  moves: PropTypes.arrayOf(PropTypes.shape({ squares: squarePropType })).isRequired
 };

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { squarePropType } from '../../../../../../src/redux/game/reducer.js';
+
 import Styles from './styles.scss';
 import Square from './components/Square';
 
@@ -34,5 +36,5 @@ export default Board;
 
 Board.propTypes = {
   onClick: PropTypes.func.isRequired,
-  squares: PropTypes.arrayOf(PropTypes.oneOf(['X', 'O'])).isRequired
+  squares: squarePropType
 };

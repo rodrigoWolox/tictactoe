@@ -1,4 +1,6 @@
-import { actions } from '../../utils/utils';
+import PropTypes from 'prop-types';
+
+import { actions } from './actions';
 
 const initialState = {
   history: [{ squares: Array(9).fill(null) }],
@@ -17,3 +19,5 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
+
+export const squarePropType = PropTypes.arrayOf(PropTypes.oneOf(['X', 'O']));

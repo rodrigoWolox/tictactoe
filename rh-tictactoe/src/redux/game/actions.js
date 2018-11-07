@@ -1,4 +1,9 @@
-import { makeMove, jumpTo, actions } from '../../utils/utils';
+import { makeMove, jumpTo } from '../../utils/utils';
+
+export const actions = {
+  PLAY_TURN: 'PLAY_TURN',
+  JUMP_TO: 'JUMP_TO'
+};
 
 export const actionCreator = {
   playTurn: (values, squarePosition) => ({
