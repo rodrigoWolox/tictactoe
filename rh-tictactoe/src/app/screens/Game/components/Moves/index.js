@@ -18,5 +18,6 @@ export default Moves;
 
 Moves.propTypes = {
   onClick: PropTypes.func.isRequired,
-  moves: PropTypes.arrayOf(PropTypes.object)
+  moves: PropTypes.arrayOf(PropTypes.shape({ squares: PropTypes.arrayOf(PropTypes.oneOf(['X', 'O'])) }))
+    .isRequired
 };

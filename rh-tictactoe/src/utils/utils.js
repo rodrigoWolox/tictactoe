@@ -1,3 +1,8 @@
+export const actions = {
+  PLAY_TURN: 'PLAY_TURN',
+  JUMP_TO: 'JUMP_TO'
+};
+
 export function calculateWinner(squares) {
   let winner = false;
   const lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
@@ -22,7 +27,6 @@ export function makeMove(state, i) {
       status = `Next player: ${!state.xIsNext ? 'X' : 'O'}`;
     }
     return {
-      ...state,
       history: history.concat([{ squares }]),
       xIsNext: !state.xIsNext,
       status,
@@ -37,7 +41,7 @@ export function jumpTo(state, step) {
   if (calculateWinner(state.history[step])) {
     status = `Winner ${calculateWinner(state.history[step])}`;
   } else {
-    status = `Next player: ${!state.xIsNext ? 'X' : 'O'}`;
+    status = `Next player: ${step % 2 === 0 ? 'X' : 'O'}`;
   }
   return {
     ...state,

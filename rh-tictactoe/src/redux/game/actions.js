@@ -1,28 +1,12 @@
-/* import { calculateWinner } from '../../utils/utils';
-
- export const nextPlayer = history => dispatch => {
-  if (calculateWinner()) {
-    dispatch({ type: actions.SOMEONE_WON });
-  } else {
-    dispatch({ type: actions.CHANGE_PLAYER });
-  }
-  dispatch(privateActionCreators.makeMove())
-} */
-
-export const actions = {
-  HANDLE_CLICK: 'HANDLE_CLICK',
-  JUMP_TO: 'JUMP_TO',
-  CHANGE_PLAYER: 'CHANGE_PLAYER',
-  SOMEONE_WON: 'SOMEONE_WON'
-};
+import { makeMove, jumpTo, actions } from '../../utils/utils';
 
 export const actionCreator = {
-  playTurn: squarePosition => ({
-    type: actions.HANDLE_CLICK,
-    squarePosition
+  playTurn: (values, squarePosition) => ({
+    type: actions.PLAY_TURN,
+    data: makeMove(values, squarePosition)
   }),
-  jumpTo: step => ({
+  jumpTo: (values, step) => ({
     type: actions.JUMP_TO,
-    step
+    data: jumpTo(values, step)
   })
 };

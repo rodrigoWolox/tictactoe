@@ -1,4 +1,4 @@
-import * as utils from '../../utils/utils';
+import { actions } from '../../utils/utils';
 
 const initialState = {
   history: [{ squares: Array(9).fill(null) }],
@@ -9,17 +9,10 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'CHANGE_PLAYER':
-      return state.merge({
-        status: state.xIsNext ? 'Nest Player: X' : 'Next Player: O',
-        xIsNext: !state.xIsNext
-      });
-    case 'SOMEONE_WON':
-      return state.merge({ status, endGame: true });
-    case 'HANDLE_CLICK':
-      return utils.makeMove(state, action.squarePosition);
-    case 'JUMP_TO':
-      return utils.jumpTo(state, action.step);
+    case actions.PLAY_TURN:
+      return { ...state, ...action.data };
+    case actions.JUMP_TO:
+      return { ...state, ...action.data };
     default:
       return state;
   }
