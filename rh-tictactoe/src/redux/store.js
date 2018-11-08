@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
 import game from './game/reducer';
 
 const reducers = combineReducers({
+  form: formReducer,
   game
 });
 
