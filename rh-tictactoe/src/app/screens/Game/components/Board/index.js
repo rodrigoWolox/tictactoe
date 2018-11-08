@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { squarePropType } from '../../../../../../src/redux/game/reducer.js';
+
 import Styles from './styles.scss';
 import Square from './components/Square';
 
 class Board extends React.Component {
-  renderSquare = i => <Square position={i} value={this.props.squares[i]} onClick={this.props.onClick} />;
+  renderSquare = i => <Square value={this.props.squares[i]} position={i} onClick={this.props.onClick} />;
 
   render() {
     return (
@@ -33,6 +35,6 @@ class Board extends React.Component {
 export default Board;
 
 Board.propTypes = {
-  squares: PropTypes.arrayOf(PropTypes.oneOf(['X', 'O'])).isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  squares: squarePropType
 };
