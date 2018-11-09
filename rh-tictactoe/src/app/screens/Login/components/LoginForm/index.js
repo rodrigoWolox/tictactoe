@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 import { Login } from '../../../../../constants/formNames';
+import { validate } from '../../validations';
 
 import Styles from './styles.scss';
 import { customInput } from './components/customInput';
@@ -19,4 +20,7 @@ class LoginForm extends Component {
   }
 }
 
-export default reduxForm({ form: Login })(LoginForm);
+export default reduxForm({
+  form: Login,
+  validate
+})(LoginForm);
