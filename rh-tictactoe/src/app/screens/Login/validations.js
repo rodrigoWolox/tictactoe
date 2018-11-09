@@ -3,6 +3,12 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
+export const required = value => (value ? undefined : 'Value is required.');
+
+export const validEmail = value => (validateEmail(value) ? undefined : 'Invalid email.');
+
+export const minLenght = value => (value.length < 8 ? 'Password too short.' : undefined);
+
 export const validate = values => {
   const error = {};
 
