@@ -1,10 +1,11 @@
 import React from 'react';
 
+import Styles from './styles.scss';
+
 export const customInput = props => {
   return (
     <div>
-      <label>{props.label}</label>
-      <input {...props.input} type={props.type} />
+      <input placeholder={props.placeholder} className={Styles.input} {...props.input} type={props.type} />
     </div>
   );
 };
