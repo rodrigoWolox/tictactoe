@@ -5,9 +5,9 @@ import Styles from './styles.scss';
 
 export const customInput = props => {
   return (
-    <div>
+    <div className={Styles.inputContainer}>
       <input placeholder={props.placeholder} className={Styles.input} {...props.input} type={props.type} />
-      {props.meta.error && <div style={{ color: 'red' }}>{props.meta.error}</div>}
+      {props.meta.error && props.meta.touched && <div style={{ color: 'red' }}>{props.meta.error}</div>}
     </div>
   );
 };
