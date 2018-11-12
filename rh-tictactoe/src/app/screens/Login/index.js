@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import UserService from '../../../services/userService';
+import { actionCreator } from '../../../../src/redux/game/actions.js';
 
 import LoginForm from './components/LoginForm';
 
 class Login extends Component {
-  onSubmit = async values => {
-    const user = await UserService.getUser(values);
-    if (user) {
-      alert(JSON.stringify(user.data, null, 2));
-    }
-  };
-
   render() {
-    return <LoginForm onSubmit={this.onSubmit} />;
+    return <LoginForm onSubmit={this.props.onSubmit} />;
   }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  onSubmit: values => dispatch(actionCreator.checkUser(values))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Login);
