@@ -1,5 +1,5 @@
 import api from '../config/api';
 
 export default {
-  getUser: email => api.get('/users', { email })
+  getUser: values => api.get('/users', values)
 };

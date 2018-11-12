@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 import { Login } from '../../../../../constants/formNames';
@@ -11,7 +11,7 @@ import { customInput } from './components/customInput';
 class LoginForm extends Component {
   render() {
     return (
-      <form className={Styles.loginForm}>
+      <form className={Styles.loginForm} onSubmit={this.props.handleSubmit}>
         <Field
           placeholder="Email"
           name="email"
