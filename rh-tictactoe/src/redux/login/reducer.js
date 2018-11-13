@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import { actions } from './actions';
 
 const initialState = {
-  history: [{ squares: Array(9).fill(null) }],
-  xIsNext: true,
-  status: 'Next player: X',
-  stepNumber: 0
+  email: '',
+  token: ''
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case actions.PLAY_TURN:
+    case actions.CHECK_USER:
       return { ...state, ...action.data };
-    case actions.JUMP_TO:
-      return { ...state, ...action.data };
+    case actions.CHECK_USER_SUCCESS:
+      return { ...state, token: action.data.token, email: action.data.email };
     default:
       return state;
   }

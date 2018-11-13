@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 import { Login } from '../../../../../constants/formNames';
@@ -35,5 +35,9 @@ class LoginForm extends Component {
     );
   }
 }
+
+LoginForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
+};
 
 export default reduxForm({ form: Login })(LoginForm);
