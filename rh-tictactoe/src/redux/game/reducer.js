@@ -20,4 +20,4 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-export const squarePropType = PropTypes.arrayOf(PropTypes.oneOf(['X', 'O']));
+export const squarePropType = PropTypes.arrayOf(PropTypes.string);

@@ -5,8 +5,8 @@ const UserService = {
 };
 
 const setInfo = (email, token) => {
-  localStorage.setItem('email', email);
-  localStorage.setItem('token', token);
+  if (!localStorage.getItem('email')) localStorage.setItem('email', email);
+  if (!localStorage.getItem('token')) localStorage.setItem('token', token);
   api.setHeader('Authenticated', token);
 };
 
