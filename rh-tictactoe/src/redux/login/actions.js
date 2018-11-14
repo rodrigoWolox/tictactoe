@@ -1,5 +1,4 @@
-import UserService from '../../services/userService';
-import api from '../../config/api';
+import { UserService, setInfo } from '../../services/userService';
 
 export const actions = {
   CHECK_USER: 'CHECK_USER',
@@ -10,23 +9,13 @@ export const actions = {
 export const actionCreator = {
   checkUser: values => async dispatch => {
     const response = await UserService.getUser(values.email, values.password);
-    if (response.ok) {
-      localStorage.setItem('email', response.data[0].email);
-      localStorage.setItem('token', response.data[0].token);
-      console.log(localStorage.getItem('email'));
-      console.log(localStorage.getItem('token'));
-      /* 
-        TODO: preguntar a guido como implementar el getHeader 
-        para no andar seteando todo el tiempo
-        api.getHeader('Authenticated'); 
-        if (!api.getHeader('Authenticated')) api.setHeader('Authenticated', response.data[0].token);
-      */
-      api.setHeader('Authenticated', response.data[0].token);
+    if (response.ok && response.data.length > 0) {
+      setInfo(response.data[0].email, response.data[0].token);
       dispatch({
         type: actions.CHECK_USER_SUCCESS,
         data: response.data[0]
       });
-    } else if (!response.ok) {
+    } else {
       alert('Usuario o contraseña incorrectos');
     }
   }
