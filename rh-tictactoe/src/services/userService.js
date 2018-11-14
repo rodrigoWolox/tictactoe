@@ -10,4 +10,4 @@ const setInfo = (email, token) => {
   api.setHeader('Authenticated', token);
 };
 
-export default { UserService, setInfo };
+export { UserService, setInfo };
