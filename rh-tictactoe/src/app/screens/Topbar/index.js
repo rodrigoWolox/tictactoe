@@ -9,7 +9,7 @@ const Links = () => (
       Log Out
     </NavLink>
     <NavLink className={Styles.link} to="/custom">
-      Custom
+      Stats
     </NavLink>
   </nav>
 );
