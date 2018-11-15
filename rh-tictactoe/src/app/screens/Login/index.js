@@ -1,26 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-import { actionCreator } from '../../../../src/redux/login/actions.js';
+import { actionCreator } from '../../../redux/login/actions';
 
-import LoginForm from './components/LoginForm';
+import { required, validEmail, minLenght } from './validations';
+import Styles from './styles.scss';
+import { customInput } from './components/customInput';
 
-class Login extends Component {
-  render() {
-    return <LoginForm onSubmit={this.props.onSubmit} />;
-  }
-}
+const Login = props => (
+  <form className={Styles.loginForm} onSubmit={props.handleSubmit}>
+    <Field
+      placeholder="Email"
+      name="email"
+      component={customInput}
+      type="text"
+      label="Name"
+      validate={[required, validEmail]}
+    />
+    <Field
+      placeholder="Password"
+      name="password"
+      component={customInput}
+      type="password"
+      label="Password"
+      validate={[required, minLenght]}
+    />
+    <button className={Styles.submitButton} type="submit">
+      Log in
+    </button>
+  </form>
+);
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: values => dispatch(actionCreator.checkUser(values))
 });
 
 Login.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired
 };
+
+const loginForm = reduxForm({ form: 'Login' })(Login);
 
 export default connect(
   null,
   mapDispatchToProps
-)(Login);
+)(loginForm);

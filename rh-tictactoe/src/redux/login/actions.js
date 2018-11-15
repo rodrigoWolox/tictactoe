@@ -16,7 +16,7 @@ export const actionCreator = {
         data: response.data[0]
       });
     } else {
-      alert('Usuario o contraseña incorrectos');
+      dispatch({ type: actions.CHECK_USER_FAILURE });
     }
   }
 };
