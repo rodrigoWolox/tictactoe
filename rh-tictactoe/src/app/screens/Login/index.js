@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -7,18 +7,22 @@ import { actionCreator } from '../../../../src/redux/login/actions.js';
 
 import LoginForm from './components/LoginForm';
 
-class Login extends Component {
+class Login extends React.Component {
   render() {
-    return localStorage.getItem('token') ? (
-      <Redirect to="/game" />
-    ) : (
-      <LoginForm onSubmit={this.props.onSubmit} />
+    return (
+      <React.Fragment>
+        {localStorage.getItem('token') === null ? (
+          <LoginForm onSubmit={this.props.onSubmit} />
+        ) : (
+          <Redirect to="/game" />
+        )}
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  token: state.login.token
+  email: state.login.email
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -26,7 +30,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Login.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default connect(

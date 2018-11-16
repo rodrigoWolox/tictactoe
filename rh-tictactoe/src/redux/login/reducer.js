@@ -11,7 +11,7 @@ export default function reducer(state = initialState, action) {
     case actions.CHECK_USER:
       return { ...state, ...action.data };
     case actions.CHECK_USER_SUCCESS:
-      return { ...state, email: action.data.email };
+      return { ...state, email: action.data };
     default:
       return state;
   }
