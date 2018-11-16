@@ -8,10 +8,8 @@ export const actions = {
 
 export const actionCreator = {
   checkUser: values => async dispatch => {
-    console.log(values);
     const response = await UserService.getUser(values.email, values.password);
     if (response.ok && response.data.length > 0) {
-      console.log(response);
       setInfo(response.data[0].email, response.data[0].token);
       dispatch({
         type: actions.CHECK_USER_SUCCESS,

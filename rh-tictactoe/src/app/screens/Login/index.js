@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { actionCreator } from '../../../redux/login/actions';
-import { getToken } from '../../../services/userService';
 
 import { required, validEmail, minLenght } from './validations';
 import Styles from './styles.scss';
@@ -13,7 +12,7 @@ import { customInput } from './components/customInput';
 
 const Login = props => (
   <React.Fragment>
-    {getToken ? (
+    {localStorage.getItem('token') === null ? (
       <form className={Styles.loginForm} onSubmit={props.handleSubmit}>
         <h1>TIC-TAC-TOE</h1>
         <Field

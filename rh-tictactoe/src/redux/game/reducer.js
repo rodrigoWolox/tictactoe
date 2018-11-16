@@ -12,6 +12,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case actions.PLAY_TURN:
+      localStorage.removeItem('token');
       return { ...state, ...action.data };
     case actions.JUMP_TO:
       return { ...state, ...action.data };
