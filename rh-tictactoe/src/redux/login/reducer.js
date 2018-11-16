@@ -10,7 +10,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case actions.CHECK_USER_SUCCESS:
-      return { ...state, token: action.data.token, email: action.data.email, loginFail: false };
+      return { ...state, email: action.data.email, loginFail: false };
     case actions.CHECK_USER_FAILURE:
       return { ...state, loginFail: true };
     default:

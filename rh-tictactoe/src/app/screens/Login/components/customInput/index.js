@@ -12,11 +12,9 @@ const getValidityClassName = meta => {
   }
 };
 
-export const customInput = props => (
-  <div className={cx(Styles.inputContainer, { dirty: props.meta.dirty }, getValidityClassName(props.meta))}>
-    <input placeholder={props.placeholder} className={Styles.input} {...props.input} type={props.type} />
-    {props.meta.error &&
-      props.meta.touched &&
-      !props.meta.active && <div style={{ color: 'red' }}>{props.meta.error}</div>}
+export const customInput = ({ placeholder, input, type, meta }) => (
+  <div className={cx(Styles.inputContainer, { dirty: meta.dirty }, getValidityClassName(meta))}>
+    <input placeholder={placeholder} className={Styles.input} {...input} type={type} />
+    {meta.error && meta.touched && !meta.active && <div style={{ color: 'red' }}>{meta.error}</div>}
   </div>
 );
