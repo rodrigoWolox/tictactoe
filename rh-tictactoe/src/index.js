@@ -18,8 +18,8 @@ class App extends React.Component {
           <Topbar />
           <Switch>
             <Route exact path="/" component={Login} />
-            <Route exact path="/game" component={Game} />
-            <Route exact path="/stats" component={Stats} />
+            <Route path="/game" component={Game} />
+            <Route path="/stats" component={Stats} />
           </Switch>
         </Router>
       </Provider>

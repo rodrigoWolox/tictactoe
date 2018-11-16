@@ -4,7 +4,7 @@ import { actions } from './actions';
 
 const initialState = {
   email: '',
-  token: ''
+  authenticated: ''
 };
 
 export default function reducer(state = initialState, action) {
@@ -12,7 +12,7 @@ export default function reducer(state = initialState, action) {
     case actions.CHECK_USER:
       return { ...state, ...action.data };
     case actions.CHECK_USER_SUCCESS:
-      return { ...state, token: action.data.token, email: action.data.email };
+      return { ...state, email: action.data.email };
     default:
       return state;
   }
