@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { actions } from './actions';
 
 const initialState = {
-  email: '',
-  authenticated: ''
+  email: ''
 };
 
 export default function reducer(state = initialState, action) {

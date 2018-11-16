@@ -9,7 +9,11 @@ import LoginForm from './components/LoginForm';
 
 class Login extends Component {
   render() {
-    return this.props.token ? <Redirect to="/game" /> : <LoginForm onSubmit={this.props.onSubmit} />;
+    return localStorage.getItem('token') ? (
+      <Redirect to="/game" />
+    ) : (
+      <LoginForm onSubmit={this.props.onSubmit} />
+    );
   }
 }
 
@@ -23,7 +27,6 @@ const mapDispatchToProps = dispatch => ({
 
 Login.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  token: PropTypes.string
 };
 
 export default connect(

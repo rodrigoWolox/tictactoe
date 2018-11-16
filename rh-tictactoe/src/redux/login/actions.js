@@ -13,7 +13,7 @@ export const actionCreator = {
       setInfo(response.data[0].email, response.data[0].token);
       dispatch({
         type: actions.CHECK_USER_SUCCESS,
-        data: response.data[0]
+        data: response.data[0].email
       });
     } else {
       alert('Usuario o contraseña incorrectos');
