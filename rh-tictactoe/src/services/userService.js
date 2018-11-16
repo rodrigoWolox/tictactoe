@@ -10,4 +10,6 @@ const setInfo = (email, token) => {
   api.setHeader('Authenticated', token);
 };
 
-export { UserService, setInfo };
+const getToken = () => localStorage.getItem('token');
+
+export { getToken, setInfo, UserService };

@@ -4,15 +4,15 @@ import { actions } from './actions';
 
 const initialState = {
   email: '',
-  token: ''
+  loginFail: false
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case actions.CHECK_USER:
-      return { ...state, ...action.data };
     case actions.CHECK_USER_SUCCESS:
-      return { ...state, token: action.data.token, email: action.data.email };
+      return { ...state, email: action.data.email, loginFail: false };
+    case actions.CHECK_USER_FAILURE:
+      return { ...state, loginFail: true };
     default:
       return state;
   }
