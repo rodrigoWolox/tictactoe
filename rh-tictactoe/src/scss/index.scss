@@ -1,5 +1,9 @@
-body {
+.root-container {
+  display: flex;
   font: 14px "Century Gothic", Futura, sans-serif;
+  height: 800px;
+  justify-content: center;
+  align-items: center;
   margin: 20px;
 }
 
