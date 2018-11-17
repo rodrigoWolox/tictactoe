@@ -12,7 +12,10 @@ class Links extends React.Component {
         <NavLink className={Styles.link} onClick={this.logOut} to="/">
           Log Out
         </NavLink>
-        <NavLink className={Styles.link} to="/custom">
+        <NavLink className={Styles.link} to="/app/game">
+          TicTacToe
+        </NavLink>
+        <NavLink className={Styles.link} to="/app/stats">
           Stats
         </NavLink>
       </nav>

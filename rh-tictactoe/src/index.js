@@ -16,7 +16,7 @@ class AppContainer extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Login} />
-            <PrivateRoute path="/app" component={App} />
+            <PrivateRoute component={App} />
           </Switch>
         </Router>
       </Provider>
