@@ -20,10 +20,6 @@ class GameContainer extends React.Component {
     this.props.dispatch(actionCreator.jumpTo(value, step));
   };
 
-  logOut = () => {
-    localStorage.removeItem('token');
-  };
-
   render() {
     return (
       <Game
@@ -32,7 +28,7 @@ class GameContainer extends React.Component {
         onClick={this.handleClick}
         status={this.props.status}
         stepNumber={this.props.stepNumber}
-        logOut={this.logOut}
+        logOut={this.props.logOut}
       />
     );
   }
@@ -40,6 +36,7 @@ class GameContainer extends React.Component {
 
 GameContainer.propTypes = {
   history: PropTypes.arrayOf(PropTypes.shape({ squares: squarePropType })).isRequired,
+  logOut: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
   stepNumber: PropTypes.number.isRequired,
   xIsNext: PropTypes.bool.isRequired
@@ -52,4 +49,11 @@ const mapStateToProps = state => ({
   xIsNext: state.game.xIsNext
 });
 
-export default connect(mapStateToProps)(GameContainer);
+const mapDispatchToProps = dispatch => ({
+  logOut: () => dispatch(actionCreator.logOut)
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GameContainer);
