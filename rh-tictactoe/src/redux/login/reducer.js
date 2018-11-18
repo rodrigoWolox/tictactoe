@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import { actions } from './actions';
 
 const initialState = {
@@ -16,5 +14,3 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
-
-export const squarePropType = PropTypes.arrayOf(PropTypes.oneOf(['X', 'O']));
