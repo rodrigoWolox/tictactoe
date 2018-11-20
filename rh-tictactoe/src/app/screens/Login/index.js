@@ -37,7 +37,7 @@ const Login = props => (
         {props.loginFail ? <h3>User or password incorrect</h3> : null}
       </form>
     ) : (
-      <Redirect to="/game" />
+      <Redirect to="/app/game" />
     )}
   </React.Fragment>
 );
