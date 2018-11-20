@@ -10,4 +10,12 @@ const setInfo = (email, token) => {
   api.setHeader('Authenticated', token);
 };
 
-export { UserService, setInfo };
+const cleanInfo = () => {
+  localStorage.removeItem('email');
+  localStorage.removeItem('token');
+  api.setHeader('Authenticated', null);
+};
+
+const getToken = () => localStorage.getItem('token');
+
+export { getToken, setInfo, UserService, cleanInfo };

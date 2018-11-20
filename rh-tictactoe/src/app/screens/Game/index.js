@@ -20,6 +20,8 @@ class GameContainer extends React.Component {
     this.props.dispatch(actionCreator.jumpTo(value, step));
   };
 
+  logOut = () => this.props.dispatch(actionCreator.logOut());
+
   render() {
     return (
       <Game
@@ -28,6 +30,7 @@ class GameContainer extends React.Component {
         onClick={this.handleClick}
         status={this.props.status}
         stepNumber={this.props.stepNumber}
+        logOut={this.logOut}
       />
     );
   }
