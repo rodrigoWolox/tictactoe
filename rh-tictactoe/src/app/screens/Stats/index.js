@@ -11,9 +11,12 @@ class StatsContainer extends React.Component {
     if (match.winner === 'X') this.xCounter += 1;
     if (match.winner === 'O') this.oCounter += 1;
     return (
-      <div key={matchId}>
-        Match {matchId + 1}: {match.date} Winner: {match.winner}
-      </div>
+      <tr key={matchId}>
+        <td>
+          Match {matchId + 1}: {match.date}
+        </td>
+        <td>{match.winner}</td>
+      </tr>
     );
   };
 

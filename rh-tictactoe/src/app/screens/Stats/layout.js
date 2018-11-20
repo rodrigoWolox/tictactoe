@@ -1,18 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Styles from './styles.scss';
+
 function Stats({ xCounter, oCounter, matches }) {
   return (
-    <React.Fragment>
+    <div className={Styles.stats}>
       <h1>Stats & Info</h1>
-      <span>
+      <div>
         X HAS WON: {xCounter} {xCounter === 1 ? 'GAME' : 'GAMES'}
-      </span>
-      <span>
+      </div>
+      <div>
         O HAS WON: {oCounter} {oCounter === 1 ? 'GAME' : 'GAMES'}
-      </span>
-      <ol>{matches}</ol>
-    </React.Fragment>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Match Date:</th>
+            <th>Match Winner:</th>
+          </tr>
+        </thead>
+        <tbody>{matches}</tbody>
+      </table>
+    </div>
   );
 }
 
