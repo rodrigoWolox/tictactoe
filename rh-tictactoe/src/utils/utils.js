@@ -9,6 +9,14 @@ export function calculateWinner(squares) {
   return winner;
 }
 
+function addMatch(winner) {
+  const date = new Date();
+  const matches = JSON.parse(localStorage.getItem('matches'));
+  const newMatch = { date: date.toLocaleDateString(), winner };
+  matches.push(newMatch);
+  localStorage.setItem('matches', JSON.stringify(matches));
+}
+
 export function makeMove(state, i) {
   let status;
   const history = state.history.slice(0, state.stepNumber + 1);
@@ -17,6 +25,7 @@ export function makeMove(state, i) {
   if (!calculateWinner(squares) && squares[i] === null) {
     squares[i] = state.xIsNext ? 'X' : 'O';
     if (calculateWinner(squares)) {
+      addMatch(calculateWinner(squares));
       status = `Winner: ${calculateWinner(squares)}`;
     } else {
       status = `Next player: ${!state.xIsNext ? 'X' : 'O'}`;
