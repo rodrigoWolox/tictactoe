@@ -1,16 +1,23 @@
-.stats {
+.scores {
+  align-self: flex-start;
+  margin: 10px 0px;
+}
 
+.stats {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
+  margin: 10px 0px;
   width: 100%;
 }
 
 td, th {
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 

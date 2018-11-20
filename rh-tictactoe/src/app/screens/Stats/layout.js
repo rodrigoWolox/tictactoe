@@ -7,10 +7,10 @@ function Stats({ xCounter, oCounter, matches }) {
   return (
     <div className={Styles.stats}>
       <h1>Stats & Info</h1>
-      <div>
+      <div className={Styles.scores}>
         X HAS WON: {xCounter} {xCounter === 1 ? 'GAME' : 'GAMES'}
       </div>
-      <div>
+      <div className={Styles.scores}>
         O HAS WON: {oCounter} {oCounter === 1 ? 'GAME' : 'GAMES'}
       </div>
       <table>

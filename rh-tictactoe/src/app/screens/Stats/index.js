@@ -6,7 +6,6 @@ class StatsContainer extends React.Component {
   matches = JSON.parse(localStorage.getItem('matches'));
   xCounter = 0;
   oCounter = 0;
-
   renderMatches = (match, matchId) => {
     if (match.winner === 'X') this.xCounter += 1;
     if (match.winner === 'O') this.oCounter += 1;
