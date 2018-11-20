@@ -15,8 +15,6 @@ export default function reducer(state = initialState, action) {
       return { ...state, ...action.data };
     case actions.JUMP_TO:
       return { ...state, ...action.data };
-    case actions.LOG_OUT:
-      return { ...state };
     default:
       return state;
   }

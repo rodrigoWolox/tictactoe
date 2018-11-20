@@ -11,7 +11,8 @@ const setInfo = (email, token) => {
 };
 
 const cleanInfo = () => {
-  localStorage.clear();
+  localStorage.removeItem('email');
+  localStorage.removeItem('token');
   api.setHeader('Authenticated', null);
 };
 
