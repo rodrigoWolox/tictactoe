@@ -7,7 +7,7 @@ import { actionCreator } from '../../../../src/redux/game/actions.js';
 
 import Styles from './styles.scss';
 
-function Links(props) {
+const Links = (props) => {
   return (
     <nav className={Styles.topbar}>
       <NavLink className={Styles.link} onClick={props.logOut} to="/login">
@@ -21,7 +21,7 @@ function Links(props) {
       </NavLink>
     </nav>
   );
-}
+};
 
 Links.propTypes = {
   logOut: PropTypes.func.isRequired
