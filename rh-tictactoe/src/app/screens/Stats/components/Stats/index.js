@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Styles from './styles.scss';
 
-const Stats = ({ xCounter, oCounter, matches }) => (
+const Stats = ({ matches, xCounter, oCounter }) => (
   <div className={Styles.stats}>
     <h1>Stats & Info</h1>
     <div className={Styles.scores}>
@@ -24,10 +24,10 @@ const Stats = ({ xCounter, oCounter, matches }) => (
   </div>
 );
 
-export default Stats;
-
 Stats.propTypes = {
   matches: PropTypes.arrayOf(PropTypes.shape({ date: PropTypes.date, winner: PropTypes.string })),
   oCounter: PropTypes.number,
   xCounter: PropTypes.number
 };
+
+export default Stats;

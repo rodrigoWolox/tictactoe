@@ -1,3 +1,5 @@
+@import '../../../../../constants/color.scss';
+
 .scores {
   align-self: flex-start;
   margin: 10px 0px;
@@ -16,11 +18,11 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border: 1px solid $grey;
   text-align: center;
   padding: 8px;
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: $grey;
 }

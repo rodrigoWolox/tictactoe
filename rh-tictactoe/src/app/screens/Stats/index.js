@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Stats from './layout.js';
+import StatsItem from './components/StatsItem';
+import Stats from './components/Stats';
 
 class StatsContainer extends React.Component {
   matches = JSON.parse(localStorage.getItem('matches'));
@@ -9,14 +10,7 @@ class StatsContainer extends React.Component {
   renderMatches = (match, matchId) => {
     if (match.winner === 'X') this.xCounter += 1;
     if (match.winner === 'O') this.oCounter += 1;
-    return (
-      <tr key={matchId}>
-        <td>
-          Match {matchId + 1}: {match.date}
-        </td>
-        <td>{match.winner}</td>
-      </tr>
-    );
+    return <StatsItem matchId={matchId} winner={match.winner} date={match.date} />;
   };
 
   render() {
