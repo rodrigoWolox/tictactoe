@@ -10,10 +10,10 @@ import { required, validEmail, minLenght } from './validations';
 import Styles from './styles.scss';
 import { customInput } from './components/customInput';
 
-const Login = props => (
+const Login = ({ handleSubmit, loginFail }) => (
   <React.Fragment>
     {localStorage.getItem('token') === null ? (
-      <form className={Styles.loginForm} onSubmit={props.handleSubmit}>
+      <form className={Styles.loginForm} onSubmit={handleSubmit}>
         <h1>TIC-TAC-TOE</h1>
         <Field
           placeholder="Email"
@@ -34,7 +34,7 @@ const Login = props => (
         <button className={Styles.submitButton} type="submit">
           Log in
         </button>
-        {props.loginFail ? <h3>User or password incorrect</h3> : null}
+        {loginFail ? <h3>User or password incorrect</h3> : null}
       </form>
     ) : (
       <Redirect to="/app/game" />
