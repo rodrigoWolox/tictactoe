@@ -5,12 +5,18 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { actionCreator } from '../../../redux/login/actions';
+import HeaderWithLoginFail from '../../components/HOC/WithLoginFail';
+import SpinnerWithLoading from '../../components/HOC/WithLoading';
 
 import { required, validEmail, minLenght } from './validations';
 import Styles from './styles.scss';
-import { customInput } from './components/customInput';
+import { customInput } from './components/CustomInput';
 
-const Login = ({ handleSubmit, loginFail }) => (
+/* const withTokenNull = Component => props => localStorage.getItem('token') === null ? <Component {...props} /> : <Redirect to='/app/game' />;
+
+const withLoading = Component => props => isLoading ? spinner : loginfail or redirect; */
+
+const Login = ({ handleSubmit, loginFail, isLoading }) => (
   <React.Fragment>
     {localStorage.getItem('token') === null ? (
       <form className={Styles.loginForm} onSubmit={handleSubmit}>
@@ -34,7 +40,8 @@ const Login = ({ handleSubmit, loginFail }) => (
         <button className={Styles.submitButton} type="submit">
           Log in
         </button>
-        {loginFail ? <h3>User or password incorrect</h3> : null}
+        <SpinnerWithLoading isLoading={isLoading} />
+        <HeaderWithLoginFail loginFail={loginFail} />
       </form>
     ) : (
       <Redirect to="/app/game" />
@@ -43,7 +50,8 @@ const Login = ({ handleSubmit, loginFail }) => (
 );
 
 const mapStateToProps = state => ({
-  loginFail: state.login.loginFail
+  loginFail: state.login.loginFail,
+  isLoading: state.login.isLoading
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -52,7 +60,8 @@ const mapDispatchToProps = dispatch => ({
 
 Login.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  loginFail: PropTypes.bool
+  loginFail: PropTypes.bool,
+  isLoading: PropTypes.bool
 };
 
 const loginForm = reduxForm({ form: 'Login' })(Login);
