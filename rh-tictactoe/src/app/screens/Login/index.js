@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-import LoginWithLoading from '../../components/HOC/WithLoading';
 import { actionCreator } from '../../../redux/login/actions';
+import withLoading from '../../components/HOC/WithLoading';
+
+import LoginForm from './components/LoginForm';
+
+const LoginWithLoading = withLoading(LoginForm);
 
 const Login = ({ handleSubmit, loginFail, isLoading }) => (
   <LoginWithLoading handleSubmit={handleSubmit} loginFail={loginFail} isLoading={isLoading} />
