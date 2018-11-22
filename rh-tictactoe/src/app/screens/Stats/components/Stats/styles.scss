@@ -1,0 +1,28 @@
+@import '../../../../../constants/color.scss';
+
+.scores {
+  align-self: flex-start;
+  margin: 10px 0px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 10px 0px;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid $grey;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: $grey;
+}
