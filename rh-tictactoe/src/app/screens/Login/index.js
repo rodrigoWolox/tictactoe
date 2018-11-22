@@ -29,12 +29,6 @@ const mapDispatchToProps = dispatch => ({
   onSubmit: values => dispatch(actionCreator.checkUser(values))
 });
 
-Login.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  loginFail: PropTypes.bool,
-  isLoading: PropTypes.bool
-};
-
 const loginForm = reduxForm({ form: 'Login' })(Login);
 
 export default connect(
